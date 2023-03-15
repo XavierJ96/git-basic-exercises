@@ -1,0 +1,373 @@
+    1  ls
+    2  Desktop
+    3  ls Desktop
+    4  ls Projects
+    5  ls Projects
+    6  ls Projects/
+    7  ls
+    8  ls Desktop/Projects
+    9  ls /
+   10  pwd
+   11  cd Desktop
+   12  cd /
+   13  cd home
+   14  ls
+   15  pwd
+   16  cd Xavier
+   17  cd /c/Users/Xavier
+   18  ls
+   19  cd Desktop
+   20  cd ..
+   21  ls
+   22  cd Desktop
+   23  ls ..
+   24  ls d
+   25  ls -d
+   26  ls -l
+   27  ls -R
+   28  cd Desktop
+   29   man
+   30  man ls
+   31  cd ..
+   32  man ls
+   33  man
+   34  man man
+   35  man ls
+   36  cd home
+   37  cd man
+   38  man
+   39  man -f
+   40  man ls
+   41  man -l
+   42  cd Ducuments
+   43  cd Documents
+   44  ls
+   45  cd Umuzi Bootcamp
+   46  cd Umuzi Bootcamp
+   47  cd Umuzi Bootcamp
+   48  cd UmuziBootcamp
+   49  cd Umuzi Bootcamp
+   50  ls 
+   51  ls Umuzi Bootcamp
+   52  ls Umuzi_Bootcamp
+   53  ls 'Umuzi Bootcamp'
+   54  mkdir git-basic-exercises
+   55  ls
+   56  mv git-basic-exercises 'Umuzi Bootcamp'
+   57  cd 'Umuzi Bootcamp'
+   58  ls
+   59  cd git-basic-exercies
+   60  cd git-basic-exercises
+   61  ls -a
+   62  git init
+   63  ls -a
+   64  git status
+   65  touch README.md
+   66  ls -a
+   67  git status
+   68  git log
+   69  git add
+   70  git add .
+   71  git status
+   72  git rm --cached README.md
+   73  git status
+   74  git commit -m "initial commit" 
+   75  git add .
+   76  git commit -m "initial commit" 
+   77  git log
+   78  q
+   79  git log q
+   80  q
+   81  nano README.md
+   82  car README.md
+   83  cat README.md
+   84  git status
+   85  git commit - m "second commit"
+   86  git commit -m "second commit"
+   87  git add
+   88  git add .
+   89  git commit -m "second commit"
+   90  nano README.md
+   91  cat README.md
+   92  git status
+   93  git add .
+   94  git commit -m "third commit"
+   95  git log 
+   96  #!/bin/bash
+   97  RC='\e[0m'
+   98  RED='\e[31m'
+   99  YELLOW='\e[33m'
+  100  GREEN='\e[32m'
+  101  command_exists () {     command -v $1 >/dev/null 2>&1; }
+  102  checkEnv() {
+  103      REQUIREMENTS='curl groups sudo';     if ! command_exists ${REQUIREMENTS}; then         echo -e "${RED}To run me, you need: ${REQUIREMENTS}${RC}";         exit 1;     fi; 
+  104      PACKAGEMANAGER='apt dnf pacman';     for pgm in ${PACKAGEMANAGER}; do         if command_exists ${pgm}; then             PACKAGER=${pgm};             echo -e "Using ${pgm}";         fi;     done;      if [ -z "${PACKAGER}" ]; then         echo -e "${RED}Can't find a supported package manager";         exit 1;     fi; 
+  105      GITPATH="$(dirname "$(realpath "$0")")";     if [[ ! -w ${GITPATH} ]]; then         echo -e "${RED}Can't write to ${GITPATH}${RC}";         exit 1;     fi; 
+  106      SUPERUSERGROUP='wheel sudo';     for sug in ${SUPERUSERGROUP}; do         if groups | grep ${sug}; then             SUGROUP=${sug};             echo -e "Super user group ${SUGROUP}";         fi;     done; 
+  107      if ! groups | grep ${SUGROUP} >/dev/null; then         echo -e "${RED}You need to be a member of the sudo group to run me!";         exit 1;     fi;      }
+  108  installDepend() {
+  109      DEPENDENCIES='autojump bash bash-completion tar neovim';     echo -e "${YELLOW}Installing dependencies...${RC}";     if [[ $PACKAGER == "pacman" ]]; then         if ! command_exists yay; then             echo "Installing yay...";             sudo ${PACKAGER} --noconfirm -S base-devel;             $(cd /opt && sudo git clone https://aur.archlinux.org/yay-git.git && sudo chown -R ${USER}:${USER} ./yay-git && cd yay-git && makepkg --noconfirm -si);         else             echo "Command yay already installed";         fi;     	yay --noconfirm -S ${DEPENDENCIES};     else      	sudo ${PACKAGER} install -yq ${DEPENDENCIES};     fi; }
+  110  installStarship(){     if command_exists starship; then         echo "Starship already installed";         return;     fi;      if ! curl -sS https://starship.rs/install.sh|sh;then         echo -e "${RED}Something went wrong during starship install}{RC}";         exit 1;     fi; }
+  111  linkConfig() {
+  112      OLD_BASHRC="${HOME}/.bashrc";     if [[ -e ${OLD_BASHRC} ]]; then         echo -e "${YELLOW}Moving old bash config file to ${HOME}/.bashrc.bak${RC}";         if ! mv ${OLD_BASHRC} ${HOME}/.bashrc.bak; then             echo -e "${RED}Can't move the old bash config file}{RC}";             exit 1;         fi;     fi;      echo -e "${YELLOW}Linking new bash config file...${RC}"
+  113      ln -svf ${GITPATH}/.bashrc ${HOME}/.bashrc;     ln -svf ${GITPATH}/starship.toml ${HOME}/.config/starship.toml; }
+  114  checkEnv
+  115  cd Documents
+  116  ls
+  117  cd 'Umuzi Bootscamp'
+  118  cd 'Umuzi Bootcamp'
+  119  ls
+  120  cd 'Level 1 coding challenges'
+  121  cd
+  122  ls
+  123  cd Documents/'Umuzi Bootcamp'
+  124  cd 'Level 1 coding challenges'
+  125  cd ..
+  126  ls
+  127  cd git-basic-excercises
+  128  cd git-basic-exercises
+  129  ls
+  130  cat README.md
+  131  git log
+  132  q
+  133  git checkout [200~ddbea5364198036c06845b1abd300333bd2e8f8a
+  134  git checkout ddbea5364198036c06845b1abd300333bd2e8f8a
+  135  cat README.md
+  136  git checkout main
+  137  cat README.md
+  138  cd
+  139  cd Documents/Umuzi Bootcamp/Level 1 coding challenges
+  140  cd Documents/'Umuzi Bootcamp'/'Level 1 coding challenges'
+  141  ls
+  142  git clone https://github.com/Umuzi-org/Xavier-Julies-219-level-1-programming-katas-javascript.git
+  143  ls
+  144  cd Xavier-Julies-219-level-1-programming-katas-javascript
+  145  ls
+  146  git checkout main
+  147  git pull
+  148  git checkout -b task/1
+  149  touch task1.js
+  150  ls
+  151  git ls-files
+  152  git ls-files
+  153  git status
+  154  git add task1.js
+  155  git ls-files
+  156  git status
+  157  git add task1.js
+  158  git status
+  159  git commit "Task 1 completed"
+  160  git commit -m "Task 1 completed"
+  161  git push origin task/1
+  162  git checkout main
+  163  git checkout -b task/2
+  164  touch task2.js
+  165  git add task2.js
+  166  git pull
+  167  git checkout main
+  168  git pull
+  169  git checkout task/2
+  170  git checkout task/1
+  171  git ls-files
+  172  git checkout task/2
+  173  git checkout task/1
+  174  git checkout task/2
+  175  git log
+  176  git status
+  177  git commit -m "Task 2 completed"
+  178  git push origin task/2
+  179  git status
+  180  git add task2.js
+  181  git commit -m "Task 2 completed"
+  182  git push origin task/2
+  183  git checkout main
+  184  git pull
+  185  git checkout -b task/3
+  186  touch task3.js
+  187  git add
+  188  git status
+  189  git add task3.js
+  190  git status
+  191  git commit -m "Task 3 completed"
+  192  git push origin task/3
+  193  git checkout main
+  194  git pull
+  195  git checkout task/3
+  196  git add task3.js
+  197  git commit -m "Task 3 completed"
+  198  git push origin task/3
+  199  git checkout main
+  200  git pull
+  201  git branch -a
+  202  git checkout -b task/4
+  203  touch task4.js
+  204  git status
+  205  git add task4.js
+  206  git status
+  207  git commit -m "Task 4 completed"
+  208  git add task4.js
+  209  git status
+  210  git commit -m "Task 4 completed"
+  211  git push origin task/4
+  212  git checkout main
+  213  git pull
+  214  git checkout -b task/5
+  215  touch task5.js
+  216  git status
+  217  git add task5.js
+  218  git status
+  219  git commit -m "Task 5 completed"
+  220  git push origin task/5
+  221  git checkout main
+  222  git pull
+  223  git checkout task/5
+  224  git status
+  225  git add task5.js
+  226  git commit -m "Task 5 completed"
+  227  git push origin task/5
+  228  git checkout main
+  229  git pull
+  230  cd
+  231  sudo apt install git
+  232  npm apt install git
+  233  ls
+  234  cd Desktop
+  235  mkdir github-config
+  236  cd github-config
+  237  git clone https://github.com/christitustech/mybash
+  238  cd mybash
+  239  ./setup.sh
+  240  cd mybash
+  241  ./setup.sh
+  242  ll
+  243  ls
+  244  ./setup.sh
+  245  npm ./setup.sh
+  246  setup.sh
+  247  cd ./setup.sh
+  248  ./setup.sh
+  249  runas ./setup.sh
+  250  cat ./setup.sh
+  251  runas apt install git
+  252  nano ~/.bashrc
+  253  nano ~/.bashrc
+  254  #!/bin/bash
+  255  RC='\e[0m'
+  256  RED='\e[31m'
+  257  YELLOW='\e[33m'
+  258  GREEN='\e[32m'
+  259  command_exists () {     command -v $1 >/dev/null 2>&1; }
+  260  checkEnv() {
+  261      REQUIREMENTS='curl groups sudo';     if ! command_exists ${REQUIREMENTS}; then         echo -e "${RED}To run me, you need: ${REQUIREMENTS}${RC}";         exit 1;     fi; 
+  262      PACKAGEMANAGER='apt dnf pacman';     for pgm in ${PACKAGEMANAGER}; do         if command_exists ${pgm}; then             PACKAGER=${pgm};             echo -e "Using ${pgm}";         fi;     done;      if [ -z "${PACKAGER}" ]; then         echo -e "${RED}Can't find a supported package manager";         exit 1;     fi; 
+  263      GITPATH="$(dirname "$(realpath "$0")")";     if [[ ! -w ${GITPATH} ]]; then         echo -e "${RED}Can't write to ${GITPATH}${RC}";         exit 1;     fi; 
+  264      SUPERUSERGROUP='wheel sudo';     for sug in ${SUPERUSERGROUP}; do         if groups | grep ${sug}; then             SUGROUP=${sug};             echo -e "Super user group ${SUGROUP}";         fi;     done; 
+  265      if ! groups | grep ${SUGROUP} >/dev/null; then         echo -e "${RED}You need to be a member of the sudo group to run me!";         exit 1;     fi;      }
+  266  installDepend() {
+  267      DEPENDENCIES='autojump bash bash-completion tar neovim';     echo -e "${YELLOW}Installing dependencies...${RC}";     if [[ $PACKAGER == "pacman" ]]; then         if ! command_exists yay; then             echo "Installing yay...";             sudo ${PACKAGER} --noconfirm -S base-devel;             $(cd /opt && sudo git clone https://aur.archlinux.org/yay-git.git && sudo chown -R ${USER}:${USER} ./yay-git && cd yay-git && makepkg --noconfirm -si);         else             echo "Command yay already installed";         fi;     	yay --noconfirm -S ${DEPENDENCIES};     else      	sudo ${PACKAGER} install -yq ${DEPENDENCIES};     fi; }
+  268  installStarship(){     if command_exists starship; then         echo "Starship already installed";         return;     fi;      if ! curl -sS https://starship.rs/install.sh|sh;then         echo -e "${RED}Something went wrong during starship install}{RC}";         exit 1;     fi; }
+  269  linkConfig() {
+  270      OLD_BASHRC="${HOME}/.bashrc";     if [[ -e ${OLD_BASHRC} ]]; then         echo -e "${YELLOW}Moving old bash config file to ${HOME}/.bashrc.bak${RC}";         if ! mv ${OLD_BASHRC} ${HOME}/.bashrc.bak; then             echo -e "${RED}Can't move the old bash config file}{RC}";             exit 1;         fi;     fi;      echo -e "${YELLOW}Linking new bash config file...${RC}"
+  271      ln -svf ${GITPATH}/.bashrc ${HOME}/.bashrc;     ln -svf ${GITPATH}/starship.toml ${HOME}/.config/starship.toml; }
+  272  checkEnv
+  273  #!/bin/bash
+  274  RC='\e[0m'
+  275  RED='\e[31m'
+  276  YELLOW='\e[33m'
+  277  GREEN='\e[32m'
+  278  command_exists () {     command -v $1 >/dev/null 2>&1; }
+  279  checkEnv() {
+  280      REQUIREMENTS='curl groups sudo';     if ! command_exists ${REQUIREMENTS}; then         echo -e "${RED}To run me, you need: ${REQUIREMENTS}${RC}";         exit 1;     fi; 
+  281      PACKAGEMANAGER='apt dnf pacman';     for pgm in ${PACKAGEMANAGER}; do         if command_exists ${pgm}; then             PACKAGER=${pgm};             echo -e "Using ${pgm}";         fi;     done;      if [ -z "${PACKAGER}" ]; then         echo -e "${RED}Can't find a supported package manager";         exit 1;     fi; 
+  282      GITPATH="$(dirname "$(realpath "$0")")";     if [[ ! -w ${GITPATH} ]]; then         echo -e "${RED}Can't write to ${GITPATH}${RC}";         exit 1;     fi; 
+  283      SUPERUSERGROUP='wheel sudo';     for sug in ${SUPERUSERGROUP}; do         if groups | grep ${sug}; then             SUGROUP=${sug};             echo -e "Super user group ${SUGROUP}";         fi;     done; 
+  284      if ! groups | grep ${SUGROUP} >/dev/null; then         echo -e "${RED}You need to be a member of the sudo group to run me!";         exit 1;     fi;      }
+  285  installDepend() {
+  286      DEPENDENCIES='autojump bash bash-completion tar neovim';     echo -e "${YELLOW}Installing dependencies...${RC}";     if [[ $PACKAGER == "pacman" ]]; then         if ! command_exists yay; then             echo "Installing yay...";             sudo ${PACKAGER} --noconfirm -S base-devel;             $(cd /opt && sudo git clone https://aur.archlinux.org/yay-git.git && sudo chown -R ${USER}:${USER} ./yay-git && cd yay-git && makepkg --noconfirm -si);         else             echo "Command yay already installed";         fi;     	yay --noconfirm -S ${DEPENDENCIES};     else      	sudo ${PACKAGER} install -yq ${DEPENDENCIES};     fi; }
+  287  installStarship(){     if command_exists starship; then         echo "Starship already installed";         return;     fi;      if ! curl -sS https://starship.rs/install.sh|sh;then         echo -e "${RED}Something went wrong during starship install}{RC}";         exit 1;     fi; }
+  288  linkConfig() {
+  289      OLD_BASHRC="${HOME}/.bashrc";     if [[ -e ${OLD_BASHRC} ]]; then         echo -e "${YELLOW}Moving old bash config file to ${HOME}/.bashrc.bak${RC}";         if ! mv ${OLD_BASHRC} ${HOME}/.bashrc.bak; then             echo -e "${RED}Can't move the old bash config file}{RC}";             exit 1;         fi;     fi;      echo -e "${YELLOW}Linking new bash config file...${RC}"
+  290      ln -svf ${GITPATH}/.bashrc ${HOME}/.bashrc;     ln -svf ${GITPATH}/starship.toml ${HOME}/.config/starship.toml; }
+  291  checkEnv
+  292  cd Desktop
+  293  ls
+  294  cd
+  295  cd Documents
+  296  cd 'Umuzi Bootcamp'/
+  297  ls
+  298  cd 'Level 1 coding challenges'/
+  299  ls
+  300  cd Xavier-Julies-219-level-1-programming-katas-javascript/
+  301  git checkout main
+  302  git pull
+  303  git checkout -b task/6
+  304  touch task6.js
+  305  git status
+  306  git add task6.js
+  307  git status
+  308  git commit -m "Task 6 completed"
+  309  git push origin task/6
+  310  git checkout main
+  311  git pull
+  312  git checkout -b task/7
+  313  touch task7.js
+  314  git status
+  315  git add
+  316  git add task7.js
+  317  git status
+  318  git commit -m "Task 7 Completed"
+  319  git push origin task/7
+  320  git checkout main
+  321  git pull
+  322  git checkout task/7
+  323  git status
+  324  git add task7.js
+  325  git commit -m "Task 7 Completed"
+  326  git push origin task/7
+  327  git checkout main
+  328  git pull
+  329  cd git-basic-exercises/
+  330  git init
+  331  touch README.md
+  332  ls -a
+  333  git add
+  334  git add README.md 
+  335  git status
+  336  git rm --cached README.md 
+  337  git status
+  338  git add README.md 
+  339  git commit -m "initial commit"
+  340  git log
+  341  q
+  342  nano README.md 
+  343  cat README.md 
+  344  git status
+  345  git add README.md 
+  346  git commit -m "second commit"
+  347  nano README.md 
+  348  cat RE
+  349  cat README.md 
+  350  git add README.md 
+  351  git commit -m "third commit"
+  352  git status
+  353  git status
+  354  git log
+  355  git checkout b2275413490e2e44144b8208fa1891c6910ccb5b
+  356  cat README.md 
+  357  git checkout main 
+  358  cat README.md 
+  359  git branch
+  360  git branch milkshake-flavours
+  361  git branch
+  362  git checkout milkshake-flavours 
+  363  git branch
+  364  nano milkshakes.md
+  365  git status
+  366  git add milkshakes.md 
+  367  git commit -m "added initial flavours"
+  368  git log
+  369  git checkout main
+  370  git checkout -b history
+  371  git log
+  372  git branch 
+  373  history > history.txt
